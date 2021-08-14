@@ -1,5 +1,6 @@
 :root {
     --color1: #6b5ccd;
+    --color2: #be5ccd;
 }
 
 html {
@@ -95,7 +96,11 @@ body {
     background-color: var(--color1);
     border-radius: 50%;
     margin-right: 2rem;
-    border: 0.2rem solid white;
+    border: 0.2rem solid #fff;
+}
+
+.slider__dot--active {
+    background-color: var(--color2);
 }
 
 .slide-number {

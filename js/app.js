@@ -48,12 +48,14 @@ const app = {
             const nextActiveSlide = activeSlide.nextElementSibling;
             nextActiveSlide.classList.add('slider__slide--active');
             app.writeSlideNumberInHTML();
+            app.updateCurrentDotsHTML();
         } else {
             app.currentSlide = 1;
             console.log(app.currentSlide);
             const firstSlide = document.querySelector('div[data-slide-number="' + app.currentSlide + '"');
             firstSlide.classList.add('slider__slide--active');
             app.writeSlideNumberInHTML();
+            app.updateCurrentDotsHTML();
         }
     },
 
@@ -69,12 +71,14 @@ const app = {
             const nextActiveSlide = activeSlide.previousElementSibling;
             nextActiveSlide.classList.add('slider__slide--active');
             app.writeSlideNumberInHTML();
+            app.updateCurrentDotsHTML();
         } else {
             app.currentSlide = app.nbSlides;
             console.log(app.currentSlide);
             const lastSlide = document.querySelector('div[data-slide-number="' + app.currentSlide + '"');
             lastSlide.classList.add('slider__slide--active');
             app.writeSlideNumberInHTML();
+            app.updateCurrentDotsHTML();
         }
     
     },
@@ -92,7 +96,15 @@ const app = {
         currentSlide.classList.add('slider__slide--active');
 
         app.writeSlideNumberInHTML();
+        app.updateCurrentDotsHTML();
 
+    },
+
+    updateCurrentDotsHTML: function() {
+        const activeDot = document.querySelector('.slider__dot--active');
+        activeDot.classList.remove('slider__dot--active');
+        const currentDot = document.querySelector('a[data-dot-number="' + app.currentSlide + '"');
+        currentDot.classList.add('slider__dot--active');
     },
 
     writeSlideNumberInHTML: function() {
