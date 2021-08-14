@@ -1,6 +1,7 @@
 :root {
     --color1: #6b5ccd;
     --color2: #be5ccd;
+    --color3: #9e2ab0;
 }
 
 html {
@@ -77,9 +78,17 @@ body {
     border-radius: 0 5px 5px 0;
 }
 
+.slider__arrow--left:hover {
+    background-color: var(--color3);
+}
+
 .slider__arrow--right {
     right: 0;
     border-radius: 5px 0 0 5px;
+}
+
+.slider__arrow--right:hover {
+    background-color: var(--color3);
 }
 
 .slider__dots {
@@ -97,6 +106,10 @@ body {
     border-radius: 50%;
     margin-right: 2rem;
     border: 0.2rem solid #fff;
+}
+
+.slider__dot:hover {
+    background-color: var(--color3);
 }
 
 .slider__dot--active {
