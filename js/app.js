@@ -11,12 +11,16 @@ const app = {
         const sliderLeftArrow = document.querySelector('.slider__arrow--left');
         sliderLeftArrow.addEventListener('click', app.handleClickLeftArrow);
 
+        app.nbSlides = document.querySelectorAll('.slider__slide').length;
+
         app.addDataNumbers();
 
         const sliderDots = document.querySelectorAll('.slider__dot');
         for (const sliderDot of sliderDots) {
             sliderDot.addEventListener('click', app.handleClickDots);
         }
+
+        app.writeSlideNumberInHTML();
 
     },
 
@@ -35,28 +39,28 @@ const app = {
     handleClickRightArrow: function() {
         app.currentSlide++;
         
-        const nbSlides = document.querySelectorAll('.slider__slide').length;
-        console.log(app.currentSlide + ' sur ' + nbSlides);
+        console.log(app.currentSlide + ' sur ' + app.nbSlides);
     
         const activeSlide = document.querySelector('.slider__slide--active');
         activeSlide.classList.remove('slider__slide--active');
     
-        if (app.currentSlide <= nbSlides) {
+        if (app.currentSlide <= app.nbSlides) {
             const nextActiveSlide = activeSlide.nextElementSibling;
             nextActiveSlide.classList.add('slider__slide--active');
+            app.writeSlideNumberInHTML();
         } else {
             app.currentSlide = 1;
             console.log(app.currentSlide);
             const firstSlide = document.querySelector('div[data-slide-number="' + app.currentSlide + '"');
             firstSlide.classList.add('slider__slide--active');
+            app.writeSlideNumberInHTML();
         }
     },
 
     handleClickLeftArrow: function() {
         app.currentSlide--;
     
-        const nbSlides = document.querySelectorAll('.slider__slide').length;
-        console.log(app.currentSlide + ' sur ' + nbSlides);
+        console.log(app.currentSlide + ' sur ' + app.nbSlides);
     
         const activeSlide = document.querySelector('.slider__slide--active');
         activeSlide.classList.remove('slider__slide--active');
@@ -64,11 +68,13 @@ const app = {
         if (app.currentSlide >= 1) {
             const nextActiveSlide = activeSlide.previousElementSibling;
             nextActiveSlide.classList.add('slider__slide--active');
+            app.writeSlideNumberInHTML();
         } else {
-            app.currentSlide = nbSlides;
+            app.currentSlide = app.nbSlides;
             console.log(app.currentSlide);
             const lastSlide = document.querySelector('div[data-slide-number="' + app.currentSlide + '"');
             lastSlide.classList.add('slider__slide--active');
+            app.writeSlideNumberInHTML();
         }
     
     },
@@ -83,9 +89,15 @@ const app = {
         activeSlide.classList.remove('slider__slide--active');
 
         const currentSlide = document.querySelector('div[data-slide-number="' + app.currentSlide + '"');
-        console.log(currentSlide);
         currentSlide.classList.add('slider__slide--active');
 
+        app.writeSlideNumberInHTML();
+
+    },
+
+    writeSlideNumberInHTML: function() {
+        const elementSlideNumberText = document.querySelector('#slide-number');
+        elementSlideNumberText.innerText = app.currentSlide + ' / ' + app.nbSlides;
     }
 }
 

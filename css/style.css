@@ -97,3 +97,14 @@ body {
     margin-right: 2rem;
     border: 0.2rem solid white;
 }
+
+.slide-number {
+    margin: 2rem 0;
+}
+
+.slide-number__text {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color1);
+}
