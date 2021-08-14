@@ -12,7 +12,7 @@ body {
 }
 
 .main-title {
-    margin-top: 3rem;
+    margin: 3rem 0;
     font-size: 3rem;
     font-weight: bold;
     text-align: center;
@@ -32,13 +32,31 @@ body {
 .slider__slide {
     width: 100%;
     background-size: cover;
+    background-position: center;
     display: none;
-    transition: 1s;
+    transition: all .1s ease;
 }
 
 .slider__slide--active {
     display: block;
 }
+
+/* .fade-in {
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 2s;
+}
+    
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+} */
 
 .slider__arrow {
     display: flex;
@@ -61,4 +79,21 @@ body {
 .slider__arrow--right {
     right: 0;
     border-radius: 5px 0 0 5px;
+}
+
+.slider__dots {
+    position: absolute;
+    width: 100%;
+    bottom: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.slider__dot {
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--color1);
+    border-radius: 50%;
+    margin-right: 2rem;
+    border: 0.2rem solid white;
 }
