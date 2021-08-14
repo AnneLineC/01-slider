@@ -33,6 +33,7 @@ body {
     width: 100%;
     background-size: cover;
     display: none;
+    transition: 1s;
 }
 
 .slider__slide--active {
