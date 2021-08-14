@@ -43,12 +43,12 @@ body {
     display: block;
 }
 
-/* .fade-in {
+.fade-in {
     opacity: 1;
     animation-name: fadeInOpacity;
     animation-iteration-count: 1;
     animation-timing-function: ease-in;
-    animation-duration: 2s;
+    animation-duration: 0.5s;
 }
     
 @keyframes fadeInOpacity {
@@ -58,7 +58,24 @@ body {
     100% {
         opacity: 1;
     }
-} */
+}
+
+.fade-out {
+    opacity: 0;
+    animation-name: fadeOutOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
+}
+    
+@keyframes fadeOutOpacity {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 
 .slider__arrow {
     display: flex;
