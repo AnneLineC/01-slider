@@ -2,9 +2,8 @@ const app = {
     currentSlide: 1,
     nbSlides: 0,
     timer: 500,
+    sliderScrollingOn: '',
     init: function() {
-
-        // console.log(app.currentSlide);
 
         const sliderRightArrow = document.querySelector('.slider__arrow--right');
         sliderRightArrow.addEventListener('click', app.handleClickRightArrow);
@@ -21,7 +20,11 @@ const app = {
             sliderDot.addEventListener('click', app.handleClickDots);
         }
 
-        // app.sliderAutomaticScrolling();
+        const playButton = document.querySelector('#button-play');
+        playButton.addEventListener('click', app.sliderPlayScrolling);
+
+        const pauseButton = document.querySelector('#button-pause');
+        pauseButton.addEventListener('click', app.sliderPauseScrolling);
 
         app.writeSlideNumberInHTML();
 
@@ -39,9 +42,22 @@ const app = {
         }
     },
 
-    // sliderAutomaticScrolling: function() {
-    //     setInterval(app.handleClickRightArrow, 4000);
-    // },
+    sliderPlayScrolling: function(event) {
+        app.handleClickRightArrow();
+        app.sliderScrollingOn = setInterval(app.handleClickRightArrow, 3000);
+        const buttonPlay = event.target;
+        buttonPlay.classList.add('hidden');
+        const buttonPause = document.getElementById('button-pause');
+        buttonPause.classList.remove('hidden');
+    },
+
+    sliderPauseScrolling: function(event) {
+        clearInterval(app.sliderScrollingOn);
+        const buttonPause = event.target;
+        buttonPause.classList.add('hidden');
+        const buttonPlay = document.getElementById('button-play');
+        buttonPlay.classList.remove('hidden');
+    },
 
     handleClickRightArrow: function() {
         app.currentSlide++;
@@ -50,7 +66,6 @@ const app = {
         const activeSlide = document.querySelector('.slider__slide--active');
         activeSlide.classList.add('fade-out');
         setTimeout(function() {activeSlide.classList.remove('slider__slide--active', 'fade-in', 'fade-out')}, app.timer);
-        // activeSlide.classList.remove('slider__slide--active', 'fade-in');
 
         if (app.currentSlide <= app.nbSlides) {
             const nextActiveSlide = activeSlide.nextElementSibling;
@@ -78,16 +93,15 @@ const app = {
         if (app.currentSlide >= 1) {
             const nextActiveSlide = activeSlide.previousElementSibling;
             setTimeout(function() {nextActiveSlide.classList.add('slider__slide--active', 'fade-in')}, app.timer);
-            app.writeSlideNumberInHTML();
-            app.updateCurrentDotsHTML();
         } else {
             app.currentSlide = app.nbSlides;
             // console.log(app.currentSlide);
             const lastSlide = document.querySelector('div[data-slide-number="' + app.currentSlide + '"]');
             setTimeout(function() {lastSlide.classList.add('slider__slide--active', 'fade-in')}, app.timer);
-            app.writeSlideNumberInHTML();
-            app.updateCurrentDotsHTML();
         }
+
+        app.writeSlideNumberInHTML();
+        app.updateCurrentDotsHTML();
     
     },
 
@@ -112,7 +126,7 @@ const app = {
     updateCurrentDotsHTML: function() {
         const activeDot = document.querySelector('.slider__dot--active');
         activeDot.classList.remove('slider__dot--active');
-        const currentDot = document.querySelector('a[data-dot-number="' + app.currentSlide + '"');
+        const currentDot = document.querySelector('button[data-dot-number="' + app.currentSlide + '"');
         currentDot.classList.add('slider__dot--active');
     },
 

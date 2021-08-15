@@ -10,7 +10,8 @@
 </head>
 <body>
     <header class="main-header">
-        <h1 class="main-title">Un slider en JavaScript</h1>
+        <h1 class="main-title">Un slider en JavaScript !</h1>
+        <p class="project-description">Projet réalisé from scratch à la fin de la saison S03 (un mois de cours)</p>
     </header>
     <main class="slider-container">
         <div class="slider">
@@ -20,16 +21,20 @@
             <div class="slider__slide" style="background-image: url('./images/pexels-photo-3226717.jpeg');"></div>
             <div class="slider__slide" style="background-image: url('./images/pexels-photo-2325447.jpeg');"></div>
             <div class="slider__slide" style="background-image: url('./images/pexels-photo-6062501.jpeg');"></div>
-            <a href="#left" class="slider__arrow slider__arrow--left"> < </a>
-            <a href="#right" class="slider__arrow slider__arrow--right"> > </a>
+            <button class="slider__arrow slider__arrow--left"> 	&#60; </button>
+            <button class="slider__arrow slider__arrow--right"> &#62; </button>
             <div class="slider__dots">
-                <a href="#1" class="slider__dot slider__dot--active"></a>
-                <a href="#2" class="slider__dot"></a>
-                <a href="#3" class="slider__dot"></a>
-                <a href="#4" class="slider__dot"></a>
-                <a href="#4" class="slider__dot"></a>
-                <a href="#5" class="slider__dot"></a>
+                <button class="slider__dot slider__dot--active"></button>
+                <button class="slider__dot"></button>
+                <button class="slider__dot"></button>
+                <button class="slider__dot"></button>
+                <button class="slider__dot"></button>
+                <button class="slider__dot"></button>
             </div>
+        </div>
+        <div class="slider-buttons">
+            <button id="button-play" class="slider-buttons__button">Play &#9654;</button>
+            <button id="button-pause" class="slider-buttons__button hidden">Pause &#x23F8;</button>
         </div>
         <div class="slide-number">
             <p id="slide-number" class="slide-number__text"></p>

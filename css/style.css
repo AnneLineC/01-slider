@@ -11,13 +11,39 @@ html {
 body {
     font-size: 1.6rem;
     font-family: Verdana, Tahoma, sans-serif;
+    background-color: aliceblue;
 }
 
 .main-title {
-    margin: 3rem 0;
+    margin-top: 3rem;
     font-size: 3rem;
     font-weight: bold;
     text-align: center;
+    color: var(--color1);
+}
+
+.project-description {
+    text-align: center;
+    margin: 1rem 3rem 4rem 3rem;
+}
+
+.slider-buttons {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.slider-buttons__button {
+    display: inline-block;
+    padding: 0 2rem;
+    height: 4rem;
+    border-radius: 2rem;
+    color: #fff;
+    background-color: var(--color1);
+    border: 0;
+}
+
+.slider-buttons__button:hover {
+    background-color: var(--color3);
 }
 
 .slider {
@@ -26,9 +52,9 @@ body {
     max-width: 90rem;
     height: 50rem;
     border: 5px solid var(--color1);
-    /* border-radius: 2rem; */
     display: flex;
     align-items: stretch;
+    border-radius: 5px;
 }
 
 .slider__slide {
@@ -54,7 +80,7 @@ body {
 @keyframes fadeInOpacity {
     0% {
         opacity: 0;
-    }
+    } 
     100% {
         opacity: 1;
     }
@@ -87,6 +113,7 @@ body {
     height: 4rem;
     background-color: var(--color1);
     color: #fff;
+    border: 0;
     font-weight: bold;
 }
 
@@ -142,4 +169,8 @@ body {
     font-size: 2rem;
     font-weight: bold;
     color: var(--color1);
+}
+
+.hidden {
+    display: none;
 }
